@@ -1,4 +1,3 @@
-let a = 5;
-let b = 10;
+import express from 'express';
 
-console.log(a + b, 'Hello');
+const app = express();
