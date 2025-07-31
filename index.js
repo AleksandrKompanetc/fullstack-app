@@ -2,13 +2,15 @@ import express from 'express'
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
-  res.send('111 Hello, World!');
+  res.send('Hello, World!');
 });
 
 app.post('auth/login', (req, res) => {
   res.json({
-    success: true
+    success: true,
   })
 })
 
