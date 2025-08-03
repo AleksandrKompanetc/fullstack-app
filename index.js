@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/auth/login', (req, res) => {
+  console.log(req.body);
   res.json({
     success: true,
   });
