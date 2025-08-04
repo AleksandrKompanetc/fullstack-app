@@ -2,6 +2,8 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 
+mongoose.connect()
+
 const app = express();
 
 app.use(express.json());
