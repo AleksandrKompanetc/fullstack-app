@@ -5,7 +5,7 @@ import {validationResult} from 'express-validator'
 
 import {registerValidation} from './validations/auth.js'
 
-import UserModel from './models/User'
+import UserModel from './models/User.js'
 
 mongoose.connect()
 .then(() => {
