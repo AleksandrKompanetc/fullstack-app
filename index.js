@@ -1,9 +1,11 @@
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
-import {validationResult} from 'express-validator';
+import {validationResult} from 'express-validator'
 
 import {registerValidation} from './validations/auth.js'
+
+import UserModel from './models/User'
 
 mongoose.connect()
 .then(() => {
@@ -25,6 +27,13 @@ app.post('/auth/register', registerValidation, (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json(errors.array());
   }
+
+  const doc = new UserModel({
+    email: req.body.email,
+    fullname: req.body.fullname,
+    avatarUrl: req.body.avatarUrl,
+    passwordHash: 
+  })
 
   res.json({
     success: true,
