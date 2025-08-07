@@ -51,7 +51,10 @@ app.post('/auth/register', registerValidation, async (req, res) => {
   }
 )
 
-  res.json(user);
+  res.json({
+    ...user._doc,
+    token,
+  });
   } catch (err) {
     console.log(err);
     res.status(500).json({
