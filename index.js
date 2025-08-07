@@ -24,7 +24,8 @@ app.use(express.json());
 // });
 
 app.post('/auth/register', registerValidation, async (req, res) => {
-  const errors = validationResult(req);
+  try {
+    const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json(errors.array());
   }
@@ -43,7 +44,11 @@ app.post('/auth/register', registerValidation, async (req, res) => {
   const user = await doc.save();
 
   res.json(user);
-
+  } catch (err) {
+    res.status(500).json({
+      message: 'Failed to register user',
+    });
+  }
 });
 
 app.listen(4444, (err) => {
