@@ -42,9 +42,7 @@ app.post('/auth/register', registerValidation, async (req, res) => {
 
   const user = await doc.save();
 
-  res.json({
-    success: true,
-  })
+  res.json(user);
 
 });
 
