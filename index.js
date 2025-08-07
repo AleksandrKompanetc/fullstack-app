@@ -42,9 +42,13 @@ app.post('/auth/register', registerValidation, async (req, res) => {
   })
 
   const user = await doc.save();
+  const token = jwt.sign({
+    _id: user._id,
+  })
 
   res.json(user);
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: 'Failed to register user',
     });
