@@ -57,7 +57,12 @@ app.post('/auth/login', async (req, res) => {
       ...userData,
       token,
     });
-  } catch (err) { }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Login error',
+    })
+   }
 })
 
 app.post('/auth/register', registerValidation, async (req, res) => {
