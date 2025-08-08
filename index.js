@@ -36,7 +36,7 @@ app.post('/auth/login', async (req, res) => {
     const isValidPassword = await bcrypt.compare(req.body.password, user._doc.passwordHash);
 
     if (!isValidPassword) {
-      return res.status(404).json({
+      return res.status(403).json({
         message: 'Invalid login or password',
       })
     }
@@ -107,6 +107,14 @@ app.post('/auth/register', registerValidation, async (req, res) => {
     });
   }
 });
+
+app.get('/auth/me', (req, res) => {
+  try {
+    
+  } catch (err) {
+
+  }
+})
 
 app.listen(4444, (err) => {
   if (err) {
