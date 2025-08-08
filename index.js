@@ -23,6 +23,12 @@ app.use(express.json());
 //   res.send('Hello, World!');
 // });
 
+app.post('/auth/login', (req, res) => {
+  try {
+    
+  } catch (err) {}
+})
+
 app.post('/auth/register', registerValidation, async (req, res) => {
   try {
     const errors = validationResult(req);
