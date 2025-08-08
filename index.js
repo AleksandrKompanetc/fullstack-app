@@ -26,17 +26,31 @@ app.use(express.json());
 app.post('/auth/login', async (req, res) => {
   try {
     const user = await UserModel.findOne({email: req.body.email});
+
     if (!user) {
       return res.status(404).json({
         message: 'User not found',
       })
     }
+
     const isValidPassword = await bcrypt.compare(req.body.password, user._doc.passwordHash);
+    
     if (!isValidPassword) {
       return res.status(404).json({
         message: 'Invalid login or password',
       })
     }
+
+    const token = jwt.sign(
+      {
+        _id: user._id,
+      },
+      'secret123',
+      {
+        expiresIn: '30d',
+      },
+    )
+
   } catch (err) {}
 })
 
