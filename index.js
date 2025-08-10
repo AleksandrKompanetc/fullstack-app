@@ -112,6 +112,7 @@ app.get('/auth/me', checkAuth, (req, res) => {
   try {
     res.json({
       success: true,
+      user: req.user,
     })
   } catch (err) {
 
