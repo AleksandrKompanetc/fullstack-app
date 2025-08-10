@@ -108,7 +108,7 @@ app.post('/auth/register', registerValidation, async (req, res) => {
   }
 });
 
-app.get('/auth/me', (req, res) => {
+app.get('/auth/me', checkAuth, (req, res) => {
   try {
     const 
   } catch (err) {
