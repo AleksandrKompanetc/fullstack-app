@@ -1,3 +1,5 @@
 const http = require('http');
 
-http.createServer().listen(3500);
+http.createServer(function(req, res) {
+  
+}).listen(3500);
