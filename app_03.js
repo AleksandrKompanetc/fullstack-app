@@ -12,7 +12,7 @@ http.createServer(function(req, res) {
       break;
     case '/contact':
       console.log('Contact page');
-      res.write('<h1>Contact</h1>');
+      res.write('<h1>Contact now</h1>');
       break;
     default:
       console.log('404');
