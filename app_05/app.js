@@ -22,6 +22,7 @@ http.createServer(function (req, res) {
       if (url.includes('/images')) {
         console.log('Image =>>>>>');
         let data = fs.readFileSync('./public' + url);
+        res.setHeader('Content-Type', 'image/png');
         res.write(data);
       } else {
         console.log('404');
