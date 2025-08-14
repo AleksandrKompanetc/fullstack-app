@@ -2,6 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const PORT = 3503;
 
+res.setHeader('Content-Type', 'text/html; charset=utf-8');
+
 http.createServer(function(req, res) {
   const url = req.url;
   console.log(url);
