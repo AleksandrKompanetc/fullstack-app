@@ -1,6 +1,6 @@
 const http = require('http');
 const fs = require('fs');
-const PORT = 3506;
+const PORT = 3507;
 
 http.createServer(function (req, res) {
   const url = req.url;
@@ -21,13 +21,13 @@ http.createServer(function (req, res) {
     default:
       if (url.includes('/images')) {
         console.log('Image =>>>>>');
-        fs.readFile('./public'+ url, {}, function (error, data) {
+        fs.readFile('./public' + url, {}, function (error, data) {
           if (error) {
-            
+            console.log('======= get =======');
+            res.setHeader('Content-Type', 'image/png');
+            res.write(data);
           }
         });
-        res.setHeader('Content-Type', 'image/png');
-        res.write(data);
       } else {
         console.log('404');
         res.write('<h1>404</h1>');
