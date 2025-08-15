@@ -50,6 +50,14 @@ http.createServer(function (req, res) {
         console.log('contact page');
         staticFile(res, '/contact.html', '.html');
         break;
+      default:
+        const extname = String(path.extname(url)).toLocaleLowerCase();
+        if (extname in mimeTypes) {
+          staticFile(res, url, extname);
+        } else {
+          res.statusCode = 404;
+          res.end();
+        }
     }
 
 }).listen(PORT);
