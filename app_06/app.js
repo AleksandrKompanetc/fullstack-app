@@ -27,5 +27,18 @@ const mimeTypes = {
     '.eot': 'application/vnd.ms-fontobject',
     '.otf': 'application/font-otf',
     '.swf': 'application/x-shockwave-flash',
-    '.wasm': 'application/wasm'    
+    '.wasm': 'application/wasm',
 }
+
+http.createServer(function (req, res) {
+    const url = req.url;
+    console.log(url);
+
+    switch (url) {
+      case '/contact':
+        console.log('contact page');
+        staticFile(res, '/contact.html', '.html');
+        break;
+    }
+
+}).listen(PORT);
