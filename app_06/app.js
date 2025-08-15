@@ -30,6 +30,17 @@ const mimeTypes = {
     '.wasm': 'application/wasm',
 }
 
+function staticFile(res, filePath, ext) {
+  res.setHeader('Content-Type', mimeTypes[ext]);
+  fs.readFile('./public'+filePath, {encoding: 'utf8', flag: 'r'}, (error, data) => {
+    if (error) {
+      res.statusCode = 404;
+      res.end();
+    }
+    res.end(data);
+  })
+}
+
 http.createServer(function (req, res) {
     const url = req.url;
     console.log(url);
