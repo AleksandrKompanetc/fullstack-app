@@ -13,7 +13,11 @@ http.createServer(function (req, res) {
       console.log('main');
       res.write('<h1>MAIN PAGE');
       break;
-    
+    case '/contact':
+      console.log('contact');
+      let data = fs.readFileSync('./contact.html', {encoding: 'utf8', flag: 'r'});
+      res.write(data);
+      break;
   }
 
 }).listen(PORT, HOSTNAME);
