@@ -18,6 +18,10 @@ http.createServer(function (req, res) {
       let data = fs.readFileSync('./contact.html', {encoding: 'utf8', flag: 'r'});
       res.write(data);
       break;
+    default:
+      res.statusCode = 404;
+      console.log(404);
   }
+  res.end();
 
 }).listen(PORT, HOSTNAME);
