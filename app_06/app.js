@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const PORT = 3509;
+const PORT = 3700;
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -32,7 +32,7 @@ const mimeTypes = {
 
 function staticFile(res, filePath, ext) {
   res.setHeader('Content-Type', mimeTypes[ext]);
-  fs.readFile('./public'+filePath, (error, data) => {
+  fs.readFile('./public' + filePath, (error, data) => {
     if (error) {
       res.statusCode = 404;
       res.end();
@@ -46,6 +46,11 @@ http.createServer(function (req, res) {
     console.log(url);
 
     switch (url) {
+      case '/':
+        console.log('main page');
+        res.write('<h1>Main</h1>');
+        res.end();
+        break;
       case '/contact':
         console.log('contact page');
         staticFile(res, '/contact.html', '.html');
