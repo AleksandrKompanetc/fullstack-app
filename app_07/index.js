@@ -8,6 +8,12 @@ http.createServer(function (req, res) {
   const url = req.url;
   console.log(url);
 
-  
+  switch (url) {
+    case '/':
+      console.log('main');
+      res.write('<h1>MAIN PAGE');
+      break;
+    
+  }
 
 }).listen(PORT, HOSTNAME);
